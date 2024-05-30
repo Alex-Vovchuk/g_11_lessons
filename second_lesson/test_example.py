@@ -1,16 +1,34 @@
 import pytest
-from first_lesson.example_module import validate_password
-
-
-@pytest.mark.parametrize("wrong_password", ['Pa!s2w', 'Password1', "<PASSWddfD>"])
-def test_validate_password(wrong_password):
-    assert not validate_password(wrong_password)
-
 
 def add_something(x, y):
     return x + y
 
 
-@pytest.mark.parametrize("first_arg, second_arg, expected_result", [(1, 2, 3), (5, 8, 13), (5, 3, 16)])
-def test_add_something(first_arg, second_arg, expected_result):
-    assert add_something(first_arg, second_arg) == expected_result
+def my_decorator(function):
+    def wrapper():
+        new_value = 2 * 68
+        print(new_value)
+        function()
+    return wrapper
+
+
+class TestExample:
+    def test_add_something(self):
+        assert type(add_something(10, 1)) is int
+
+    def test_add_something_1(self, preparing_for_test, second_preparing):
+        print(second_preparing)
+        for p in preparing_for_test:
+            assert type(add_something(p, 2)) is not str
+
+
+class TestExample1:
+
+    @pytest.mark.smoke
+    def test_add_something_2(self, preparing_for_test):
+        for p in preparing_for_test:
+            assert type(add_something(p, 1)) is int
+
+    def test_add_something_4(self, preparing_for_test):
+        for p in preparing_for_test:
+            assert type(add_something(p, 2)) is not str
