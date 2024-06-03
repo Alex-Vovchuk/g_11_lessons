@@ -2,6 +2,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from test_framework_example.constants import MAIN_URL
 
@@ -19,3 +21,7 @@ class Browser(object):
 
     def find_by_xpath(self, xpath):
         return self.driver.find_element(By.XPATH, xpath)
+
+    def wait_for_clickable(self, element):
+        wait = WebDriverWait(self.driver, timeout=10)
+        return wait.until(EC.element_to_be_clickable(element))

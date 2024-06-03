@@ -3,9 +3,10 @@ from test_framework_example.constants import MAIN_URL
 from test_framework_example.helpers.pages.base_page import BasePage
 
 
-class MainPage(BasePage):
+class MainPage:
 
     def __init__(self):
+        self.driver = Browser()
         self.elements_card_locator = '//*[@class="card-body" and .="Elements"]'
         self.forms_card_locator = '//*[@class="card-body" and .="Forms"]'
         self.alerts_frame_card_locator = '//*[@class="card-body" and .="Alerts, Frame & Windows"]'
