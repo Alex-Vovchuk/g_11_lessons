@@ -22,6 +22,6 @@ class Browser(object):
     def find_by_xpath(self, xpath):
         return self.driver.find_element(By.XPATH, xpath)
 
-    def wait_for_clickable(self, element):
+    def wait_for_clickable(self, locator):
         wait = WebDriverWait(self.driver, timeout=10)
-        return wait.until(EC.element_to_be_clickable(element))
+        return wait.until(EC.element_to_be_clickable((By.XPATH, locator)))

@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from selenium.webdriver.common.action_chains import ActionChains
 
-service = Service(executable_path=".//chromedriver.exe")
+service = Service(executable_path="../real_project_example/browser/chromedriver.exe")
 driver = webdriver.Chrome(service=service)
 
 WAIT_TIME = 10
